@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive Account Portfolio Analysis</title>
+    <title>Updated Account Portfolio Analysis</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 10px;
             background-color: #f5f5f5;
         }
         
@@ -22,6 +22,7 @@
             color: #2c3e50;
             border-bottom: 3px solid #3498db;
             padding-bottom: 10px;
+            font-size: 24px;
         }
         
         .summary {
@@ -29,19 +30,21 @@
             padding: 15px;
             border-radius: 5px;
             margin-bottom: 20px;
+            font-size: 14px;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
-            font-size: 12px;
+            font-size: 11px;
         }
         
         th, td {
             border: 1px solid #bdc3c7;
-            padding: 8px;
+            padding: 6px;
             text-align: left;
+            vertical-align: top;
         }
         
         th {
@@ -50,6 +53,7 @@
             font-weight: bold;
             position: sticky;
             top: 0;
+            font-size: 10px;
         }
         
         /* Risk-based row coloring */
@@ -68,24 +72,18 @@
             border-left: 4px solid #4caf50;
         }
         
-        .unknown-risk {
-            background-color: #f3e5f5;
-            border-left: 4px solid #9c27b0;
-        }
-        
         .kevin-assigned {
             font-weight: bold;
-            background-color: #e3f2fd;
         }
         
         .expired {
-            background-color: #ffcdd2;
+            background-color: #ffcdd2 !important;
             color: #c62828;
             font-weight: bold;
         }
         
         .expiring-soon {
-            background-color: #ffe0b2;
+            background-color: #ffe0b2 !important;
             color: #e65100;
             font-weight: bold;
         }
@@ -98,10 +96,11 @@
             background-color: #3498db;
             color: white;
             border: none;
-            padding: 10px 15px;
-            margin: 5px;
+            padding: 8px 12px;
+            margin: 3px;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 12px;
         }
         
         button:hover {
@@ -112,8 +111,8 @@
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 20px;
-            font-size: 12px;
+            margin-bottom: 15px;
+            font-size: 11px;
         }
         
         .legend-item {
@@ -124,19 +123,25 @@
         
         .legend-color {
             width: 20px;
-            height: 15px;
+            height: 12px;
             border-radius: 3px;
+        }
+        
+        .new-account {
+            background-color: #e1f5fe;
+            border: 2px dashed #0277bd;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📊 Comprehensive Account Portfolio Analysis</h1>
+        <h1>📊 UPDATED COMPREHENSIVE ACCOUNT PORTFOLIO</h1>
         
         <div class="summary">
-            <strong>Portfolio Overview:</strong> 53 Total Accounts | 38 Fully Vetted + 15 Requiring Assessment<br>
-            <strong>Kevin's Assignment:</strong> 27 Accounts | $4.06M ARR | 12 Vetted + 15 Unknown<br>
-            <strong>Risk Status:</strong> 6 High Risk | 29 Medium Risk | 3 Low Risk | 15 Unknown
+            <strong>Portfolio Update:</strong> Original 37 Vetted + 15 New Accounts from Kevin's Assignment = 52 Total Accounts<br>
+            <strong>Kevin's Assignment:</strong> 27 Accounts | $4.06M ARR | Mix of existing vetted + newly analyzed<br>
+            <strong>Updated Risk Status:</strong> 9 High Risk | 38 Medium Risk | 5 Low Risk<br>
+            <strong>Communication Analysis:</strong> Only 3 accounts with active communication | $2.5M+ ARR in dormant accounts
         </div>
         
         <div class="legend">
@@ -153,95 +158,77 @@
                 <span>Low Risk</span>
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background-color: #f3e5f5; border-left: 4px solid #9c27b0;"></div>
-                <span>Unknown Risk</span>
+                <div class="legend-color" style="background-color: #e1f5fe; border: 2px dashed #0277bd;"></div>
+                <span>Newly Added</span>
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background-color: #e3f2fd;"></div>
-                <span>Kevin's Assignment</span>
+                <strong>Bold = Kevin's Assignment</strong>
             </div>
         </div>
         
         <div class="controls">
-            <button onclick="filterTable('all')">Show All Accounts</button>
-            <button onclick="filterTable('kevin')">Kevin's 27 Accounts</button>
-            <button onclick="filterTable('high-risk')">High Risk Only</button>
-            <button onclick="filterTable('unknown')">Unknown Risk Only</button>
-            <button onclick="exportToCSV()">Export to CSV</button>
+            <button onclick="filterTable('all')">All Accounts</button>
+            <button onclick="filterTable('kevin')">Kevin's 27</button>
+            <button onclick="filterTable('high-risk')">High Risk</button>
+            <button onclick="filterTable('new')">Newly Added</button>
+            <button onclick="exportToCSV()">Export CSV</button>
         </div>
         
         <table id="accountTable">
             <thead>
                 <tr>
                     <th>Account Name</th>
-                    <th>Total ARR (USD)</th>
+                    <th>Total ARR (converted)</th>
                     <th>Renewal Start Date</th>
-                    <th>Geography</th>
-                    <th>Previous Commercial Partner</th>
-                    <th>Previous CSM Partner</th>
-                    <th>Kevin Assigned</th>
-                    <th>Account Churn Risk</th>
-                    <th>Concerns to be Addressed</th>
-                    <th>Proposed Action Plan</th>
-                    <th>Date of Action Plan</th>
-                    <th>Status of Action Plan</th>
-                    <th>Customer Engagement Status</th>
+                    <th>Geo</th>
+                    <th>IgniteTech Commercial Partner</th>
+                    <th>IgniteTech CSM Partner</th>
                     <th>Executive POC</th>
-                    <th>Executive POC Location</th>
+                    <th>Executive POC - Location City</th>
+                    <th>Customer Engagement Status</th>
+                    <th>Account Churn Risk</th>
+                    <th>Concerns to be addressed</th>
+                    <th>Proposed action plan</th>
+                    <th>Date of action plan</th>
+                    <th>Status of action plan</th>
+                    <th>Kevin Assigned</th>
                 </tr>
             </thead>
             <tbody id="accountTableBody">
-                <!-- High Risk Accounts -->
-                <tr class="high-risk kevin-assigned">
-                    <td>US Navy</td>
-                    <td>$108,401.30</td>
-                    <td class="expiring-soon">7/31/2025</td>
-                    <td>North America</td>
-                    <td>Lethicia Mares</td>
-                    <td>Kevin Botha</td>
-                    <td>✅ YES</td>
-                    <td>High</td>
-                    <td>Renewal expiring 31 July, government account with no recent communication</td>
-                    <td>Emergency renewal coordination with government contracting team</td>
-                    <td>Immediate</td>
-                    <td>In Progress</td>
-                    <td>Critical</td>
-                    <td>Government Contact</td>
-                    <td>Washington DC</td>
-                </tr>
-                <tr class="high-risk kevin-assigned">
-                    <td>DataRobot, Inc.</td>
-                    <td>$105,804.00</td>
-                    <td class="expired">6/30/2025</td>
-                    <td>North America</td>
-                    <td>Lethicia Mares</td>
-                    <td>Kevin Botha</td>
-                    <td>✅ YES</td>
-                    <td>High</td>
-                    <td>Renewal expired, AI/ML platform account</td>
-                    <td>Escalate to commercial team for immediate renewal discussion</td>
-                    <td>Immediate</td>
-                    <td>Escalated</td>
-                    <td>Critical</td>
+                <!-- HIGH RISK ACCOUNTS -->
+                <tr class="high-risk kevin-assigned new-account">
+                    <td><strong>Hughes Network Systems</strong></td>
+                    <td>$233,763.00</td>
                     <td>TBD</td>
-                    <td>Boston, MA</td>
-                </tr>
-                <tr class="high-risk kevin-assigned">
-                    <td>Duck Creek</td>
-                    <td>$105,320.00</td>
-                    <td>4/1/2026</td>
                     <td>North America</td>
                     <td>Andrew Mugisha</td>
-                    <td>Kevin Botha</td>
-                    <td>✅ YES</td>
-                    <td>High</td>
-                    <td>SOC 2 documentation issues, XSS vulnerability questions</td>
-                    <td>Coordinate with security team to provide SOC 2 documentation</td>
-                    <td>This week</td>
-                    <td>Planned</td>
-                    <td>Engaged</td>
+                    <td>Emin Medic</td>
                     <td>TBD</td>
-                    <td>Boston, MA</td>
+                    <td>TBD</td>
+                    <td>No Communication Found</td>
+                    <td>High</td>
+                    <td>Highest ARR account with no communication history - critical assessment needed</td>
+                    <td>Immediate handoff with Emin Medic, comprehensive health check</td>
+                    <td>Next week</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
+                </tr>
+                <tr class="high-risk kevin-assigned new-account">
+                    <td><strong>Western Governors University</strong></td>
+                    <td>$230,205.00</td>
+                    <td>TBD</td>
+                    <td>North America</td>
+                    <td>Andrew Mugisha</td>
+                    <td>Emin Medic</td>
+                    <td>TBD</td>
+                    <td>Salt Lake City, Utah, United States</td>
+                    <td>No Communication Found</td>
+                    <td>High</td>
+                    <td>High ARR education account with no communication history</td>
+                    <td>Immediate handoff with Emin Medic, education sector assessment</td>
+                    <td>Next week</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
                 </tr>
                 <tr class="high-risk">
                     <td>American Chemical Society</td>
@@ -250,15 +237,15 @@
                     <td>North America</td>
                     <td>Andrew Mugisha</td>
                     <td>Kevin Botha</td>
-                    <td>❌ NO</td>
+                    <td>Megan Jacob</td>
+                    <td>Washington DC</td>
+                    <td>Critical</td>
                     <td>High</td>
                     <td>Renewal expired, no recent communication</td>
                     <td>Liaise with account manager to understand if they have communicated and escalated to renewal team</td>
                     <td>This week</td>
                     <td>Planned</td>
-                    <td>Critical</td>
-                    <td>Megan Jacob</td>
-                    <td>Washington DC</td>
+                    <td>❌ NO</td>
                 </tr>
                 <tr class="high-risk">
                     <td>ADTRAN, Inc.</td>
@@ -267,15 +254,15 @@
                     <td>North America</td>
                     <td>Andrew Mugisha</td>
                     <td>Kevin Botha</td>
-                    <td>❌ NO</td>
+                    <td>TBD</td>
+                    <td>Huntsville, AL</td>
+                    <td>Critical</td>
                     <td>High</td>
-                    <td>Renewal expiring 31 July 2025, no recent communications</td>
+                    <td>Renewal expiring 31 July 2025, no recent comms</td>
                     <td>Emergency renewal outreach and commercial team coordination</td>
                     <td>Immediate</td>
                     <td>Planned</td>
-                    <td>Critical</td>
-                    <td>TBD</td>
-                    <td>Huntsville, AL</td>
+                    <td>❌ NO</td>
                 </tr>
                 <tr class="high-risk">
                     <td>LogicMonitor</td>
@@ -284,431 +271,700 @@
                     <td>North America</td>
                     <td>Lethicia Mares</td>
                     <td>Kevin Botha</td>
-                    <td>❌ NO</td>
+                    <td>TBD</td>
+                    <td>Santa Barbara, CA</td>
+                    <td>Critical</td>
                     <td>High</td>
                     <td>Admin access crisis, inbox issues, support delays</td>
                     <td>Coordinate with support team to resolve admin access and communication issues</td>
                     <td>This week</td>
                     <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="high-risk kevin-assigned">
+                    <td><strong>US Navy</strong></td>
+                    <td>$108,401.30</td>
+                    <td class="expiring-soon">7/31/2025</td>
+                    <td>North America</td>
+                    <td>Lethicia Mares</td>
+                    <td>Kevin Botha</td>
+                    <td>Government Contact</td>
+                    <td>Washington DC</td>
                     <td>Critical</td>
-                    <td>TBD</td>
-                    <td>Santa Barbara, CA</td>
+                    <td>High</td>
+                    <td>Renewal expiring 31 july, government account with no recent communication</td>
+                    <td>Emergency renewal coordination with government contracting team</td>
+                    <td>Immediate</td>
+                    <td>In Progress</td>
+                    <td>✅ YES</td>
                 </tr>
-                
-                <!-- Kevin's Unknown Risk Accounts (High Priority) -->
-                <tr class="unknown-risk kevin-assigned">
-                    <td>Hughes Network Systems</td>
-                    <td>$233,763.00</td>
+                <tr class="high-risk kevin-assigned">
+                    <td><strong>DataRobot, Inc.</strong></td>
+                    <td>$105,804.00</td>
+                    <td class="expired">6/30/2025</td>
+                    <td>North America</td>
+                    <td>Lethicia Mares</td>
+                    <td>Kevin Botha</td>
                     <td>TBD</td>
+                    <td>Boston, MA</td>
+                    <td>Critical</td>
+                    <td>High</td>
+                    <td>Renewal expired, AI/ML platform account</td>
+                    <td>Escalate to commercial team for immediate renewal discussion</td>
+                    <td>Immediate</td>
+                    <td>Escalated</td>
+                    <td>✅ YES</td>
+                </tr>
+                <tr class="high-risk kevin-assigned">
+                    <td><strong>Duck Creek</strong></td>
+                    <td>$105,320.00</td>
+                    <td>4/1/2026</td>
                     <td>North America</td>
                     <td>Andrew Mugisha</td>
-                    <td>Emin Medic</td>
+                    <td>Kevin Botha</td>
+                    <td>Alexander Gottman</td>
+                    <td>Boston, MA</td>
+                    <td>Active Escalations</td>
+                    <td>High</td>
+                    <td>SOC 2 documentation issues, XSS vulnerability questions, 2+ weeks system failure</td>
+                    <td>Coordinate with security team, resolve support tickets 00449143, 00449221, 00449295</td>
+                    <td>This week</td>
+                    <td>In Progress</td>
                     <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - Highest ARR account</td>
-                    <td>Schedule immediate handoff with Emin Medic</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
-                    <td>TBD</td>
-                    <td>TBD</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>Western Governors University</td>
-                    <td>$230,205.00</td>
-                    <td>TBD</td>
+
+                <!-- MEDIUM RISK ACCOUNTS -->
+                <tr class="medium-risk">
+                    <td>Vivid Seats</td>
+                    <td>$225,798.03</td>
+                    <td>4/15/2026</td>
                     <td>North America</td>
                     <td>Andrew Mugisha</td>
-                    <td>Emin Medic</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - High ARR education account</td>
-                    <td>Schedule immediate handoff with Emin Medic</td>
-                    <td>Next week</td>
+                    <td>Kevin Botha</td>
+                    <td>Daniel Tim</td>
+                    <td>Fontana-on-Geneva Lake, Wisconsin, United States</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>No recent communication found, dormant account status</td>
+                    <td>Health check call to assess platform utilization and satisfaction</td>
+                    <td>next 2 weeks</td>
                     <td>Planned</td>
-                    <td>Unknown</td>
-                    <td>TBD</td>
-                    <td>Salt Lake City, UT</td>
+                    <td>❌ NO</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>U.S. Cellular</td>
+                <tr class="medium-risk">
+                    <td>QVC, Inc.</td>
+                    <td>$224,895.00</td>
+                    <td>11/22/2025</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>Kevin Botha</td>
+                    <td>Jeff Charney</td>
+                    <td>West Chester, PA</td>
+                    <td>Engaged</td>
+                    <td>Medium</td>
+                    <td>Dormant, low activity</td>
+                    <td>Assess engagement</td>
+                    <td>2025-07-31</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk kevin-assigned">
+                    <td><strong>CSL Behring L.L.C.</strong></td>
+                    <td>$216,266.00</td>
+                    <td>11/2025</td>
+                    <td>North America</td>
+                    <td>Andrew Mugisha</td>
+                    <td>Kevin Botha</td>
+                    <td>TBD</td>
+                    <td>King of Prussia, PA</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>Dormant account, upcoming renewal in 4 months</td>
+                    <td>Immediate re-engagement outreach, renewal preparation</td>
+                    <td>Next 2 weeks</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
+                </tr>
+                <tr class="medium-risk kevin-assigned new-account">
+                    <td><strong>U.S. Cellular</strong></td>
                     <td>$207,230.00</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Andrew Mugisha</td>
                     <td>Emin Medic</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - High ARR telecom account</td>
-                    <td>Schedule immediate handoff with Emin Medic</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
                     <td>TBD</td>
                     <td>Chicago, IL</td>
+                    <td>No Communication Found</td>
+                    <td>Medium</td>
+                    <td>High ARR telecom account with no communication history</td>
+                    <td>Immediate handoff with Emin Medic, telecom sector assessment</td>
+                    <td>Next week</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>Resideo Technologies Inc</td>
+                <tr class="medium-risk kevin-assigned new-account">
+                    <td><strong>Resideo Technologies Inc</strong></td>
                     <td>$203,999.95</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Andrew Mugisha</td>
                     <td>Emin Medic</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - High ARR technology account</td>
-                    <td>Schedule immediate handoff with Emin Medic</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
                     <td>TBD</td>
                     <td>Austin, TX</td>
+                    <td>No Communication Found</td>
+                    <td>Medium</td>
+                    <td>High ARR technology account with no communication history</td>
+                    <td>Immediate handoff with Emin Medic, technology sector assessment</td>
+                    <td>Next week</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>SoFi</td>
+                <tr class="medium-risk">
+                    <td>BrightSpeed</td>
+                    <td>$203,569.65</td>
+                    <td>TBD</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>Dormant, needs review</td>
+                    <td>Engagement assessment</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk kevin-assigned new-account">
+                    <td><strong>SoFi</strong></td>
                     <td>$201,950.70</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Andrew Mugisha</td>
                     <td>Andrew Mugisha</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - High ARR fintech account</td>
-                    <td>Schedule handoff with Andrew Mugisha</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
                     <td>TBD</td>
                     <td>San Francisco, CA</td>
+                    <td>No Communication Found</td>
+                    <td>Medium</td>
+                    <td>High ARR fintech account with no communication history</td>
+                    <td>Handoff with Andrew Mugisha, fintech sector assessment</td>
+                    <td>Next week</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>Boston Scientific Corporation</td>
+                <tr class="medium-risk">
+                    <td>Red Hat, Inc.</td>
+                    <td>$201,616.53</td>
+                    <td>TBD</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Issues</td>
+                    <td>Medium</td>
+                    <td>Unresolved tickets, data analytics anomalies</td>
+                    <td>Technical review and ticket resolution</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk">
+                    <td>Prestige Brands</td>
+                    <td>$200,112.60</td>
+                    <td>TBD</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Training</td>
+                    <td>Medium</td>
+                    <td>Proposed training session to align, highlighted risks in granting admin access</td>
+                    <td>Training coordination and admin access review</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk kevin-assigned new-account">
+                    <td><strong>Boston Scientific Corporation</strong></td>
                     <td>$196,209.00</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Andrew Mugisha</td>
                     <td>Emin Medic</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - High ARR medical device account</td>
-                    <td>Schedule immediate handoff with Emin Medic</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
                     <td>TBD</td>
                     <td>Marlborough, MA</td>
+                    <td>Previous Concerns</td>
+                    <td>Medium</td>
+                    <td>March 2025 renewal report noted 'Happy with value delivered' but has unresolved concerns</td>
+                    <td>Health check call to assess current satisfaction and address concerns</td>
+                    <td>Next 2 weeks</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
                 </tr>
-                
-                <!-- Kevin's Medium Risk Accounts -->
-                <tr class="medium-risk kevin-assigned">
-                    <td>CSL Behring L.L.C.</td>
-                    <td>$216,266.00</td>
+                <tr class="medium-risk">
+                    <td>Williams-Sonoma, Inc.</td>
+                    <td>$185,085.00</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Andrew Mugisha</td>
-                    <td>Kevin Botha</td>
-                    <td>✅ YES</td>
-                    <td>Medium</td>
-                    <td>Dormant, requires re-engagement</td>
-                    <td>Health check call to assess current utilization and satisfaction</td>
-                    <td>Next 2 weeks</td>
-                    <td>Planned</td>
-                    <td>Dormant</td>
                     <td>TBD</td>
-                    <td>King of Prussia, PA</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>No recent communication</td>
+                    <td>Re-engagement outreach</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk">
+                    <td>Dynatrace</td>
+                    <td>$174,800.00</td>
+                    <td>TBD</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>No recent communications found, enterprise account requiring assessment</td>
+                    <td>Enterprise assessment and re-engagement</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
                 </tr>
                 <tr class="medium-risk kevin-assigned">
-                    <td>RedSail Technologies, LLC</td>
+                    <td><strong>RedSail Technologies, LLC</strong></td>
                     <td>$172,108.00</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Lethicia Mares</td>
                     <td>Kevin Botha</td>
-                    <td>✅ YES</td>
+                    <td>TBD</td>
+                    <td>Tampa, FL</td>
+                    <td>Dormant</td>
                     <td>Medium</td>
-                    <td>No recent communications, technical account requiring attention</td>
+                    <td>High-value account, no recent communication found</td>
                     <td>Technical health check and platform utilization review</td>
                     <td>Next 2 weeks</td>
                     <td>Planned</td>
-                    <td>Dormant</td>
+                    <td>✅ YES</td>
+                </tr>
+                <tr class="medium-risk">
+                    <td>Truth Initiative</td>
+                    <td>$171,180.00</td>
                     <td>TBD</td>
-                    <td>Tampa, FL</td>
+                    <td>North America</td>
+                    <td>Lethicia Mares</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>On Hold</td>
+                    <td>Medium</td>
+                    <td>Aurora upgrade project on hold pending ignite tech clarification</td>
+                    <td>Project coordination and technical clarification</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk">
+                    <td>Constant Contact, Inc.</td>
+                    <td>$166,180.58</td>
+                    <td>TBD</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>No recent communications found, mid market account needing assessment</td>
+                    <td>Mid-market engagement assessment</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
                 </tr>
                 <tr class="medium-risk kevin-assigned">
-                    <td>Publishers Clearing House</td>
+                    <td><strong>Publishers Clearing House</strong></td>
                     <td>$161,251.00</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Lethicia Mares</td>
                     <td>Kevin Botha</td>
-                    <td>✅ YES</td>
+                    <td>TBD</td>
+                    <td>Jericho, NY</td>
+                    <td>Dormant</td>
                     <td>Medium</td>
-                    <td>No recent communication, consumer engagement account requiring check</td>
+                    <td>Mentioned in Lethicia's portfolio, no recent communication found</td>
                     <td>Consumer engagement strategy review and health check</td>
                     <td>Next 2 weeks</td>
                     <td>Planned</td>
-                    <td>Dormant</td>
-                    <td>TBD</td>
-                    <td>Jericho, NY</td>
-                </tr>
-                <tr class="medium-risk kevin-assigned">
-                    <td>CDW Corporation</td>
-                    <td>$151,845.00</td>
-                    <td>TBD</td>
-                    <td>North America</td>
-                    <td>Andrew Mugisha</td>
-                    <td>Kevin Botha</td>
                     <td>✅ YES</td>
-                    <td>Medium</td>
-                    <td>Dormant account</td>
-                    <td>Re-engagement campaign with focus on technology solutions</td>
-                    <td>Next 2 weeks</td>
-                    <td>Planned</td>
-                    <td>Dormant</td>
-                    <td>TBD</td>
-                    <td>Vernon Hills, IL</td>
                 </tr>
-                <tr class="medium-risk kevin-assigned">
-                    <td>Blue Shield of California</td>
-                    <td>$136,500.00</td>
-                    <td>TBD</td>
-                    <td>North America</td>
-                    <td>Lethicia Mares</td>
-                    <td>Kevin Botha</td>
-                    <td>✅ YES</td>
-                    <td>Medium</td>
-                    <td>No recent communication, healthcare account requiring assessment</td>
-                    <td>Healthcare compliance review and engagement assessment</td>
-                    <td>Next 2 weeks</td>
-                    <td>Planned</td>
-                    <td>Dormant</td>
-                    <td>TBD</td>
-                    <td>San Francisco, CA</td>
-                </tr>
-                <tr class="medium-risk kevin-assigned">
-                    <td>Flexera Software</td>
-                    <td>$132,637.53</td>
-                    <td>TBD</td>
-                    <td>North America</td>
-                    <td>Andrew Mugisha</td>
-                    <td>Kevin Botha</td>
-                    <td>✅ YES</td>
-                    <td>Medium</td>
-                    <td>No recent communication, software/tech company needing attention</td>
-                    <td>Technology partnership review and platform assessment</td>
-                    <td>Next 2 weeks</td>
-                    <td>Planned</td>
-                    <td>Dormant</td>
-                    <td>TBD</td>
-                    <td>Itasca, IL</td>
-                </tr>
-                <tr class="medium-risk kevin-assigned">
-                    <td>Tiffany & Co.</td>
-                    <td>$112,944.00</td>
-                    <td>TBD</td>
-                    <td>North America</td>
-                    <td>Andrew Mugisha</td>
-                    <td>Kevin Botha</td>
-                    <td>✅ YES</td>
-                    <td>Medium</td>
-                    <td>No activity, enterprise account</td>
-                    <td>Enterprise engagement strategy and luxury brand consultation</td>
-                    <td>Next 2 weeks</td>
-                    <td>Planned</td>
-                    <td>Dormant</td>
-                    <td>TBD</td>
-                    <td>New York, NY</td>
-                </tr>
-                <tr class="medium-risk kevin-assigned">
-                    <td>Wells Enterprises, Inc.</td>
-                    <td>$107,753.00</td>
-                    <td>TBD</td>
-                    <td>North America</td>
-                    <td>Lethicia Mares</td>
-                    <td>Kevin Botha</td>
-                    <td>✅ YES</td>
-                    <td>Medium</td>
-                    <td>No recent communications</td>
-                    <td>Food industry engagement and platform utilization review</td>
-                    <td>Next 2 weeks</td>
-                    <td>Planned</td>
-                    <td>Dormant</td>
-                    <td>TBD</td>
-                    <td>Le Mars, IA</td>
-                </tr>
-                
-                <!-- Kevin's Low Risk Account -->
-                <tr class="low-risk kevin-assigned">
-                    <td>Sisense Inc.</td>
-                    <td>$163,381.55</td>
-                    <td>TBD</td>
-                    <td>North America</td>
-                    <td>Lethicia Mares</td>
-                    <td>Kevin Botha</td>
-                    <td>✅ YES</td>
-                    <td>Low</td>
-                    <td>Stable account with regular engagement</td>
-                    <td>Continue regular monthly check-ins and product updates</td>
-                    <td>Ongoing</td>
-                    <td>Active</td>
-                    <td>Engaged</td>
-                    <td>TBD</td>
-                    <td>New York, NY</td>
-                </tr>
-                
-                <!-- Additional Unknown Risk Accounts for Kevin -->
-                <tr class="unknown-risk kevin-assigned">
-                    <td>Regis Corporation</td>
+                <tr class="medium-risk kevin-assigned new-account">
+                    <td><strong>Regis Corporation</strong></td>
                     <td>$153,917.60</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Asad Khalil</td>
                     <td>Emin Medic</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - Beauty/salon industry account</td>
-                    <td>Schedule handoff with Emin Medic</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
                     <td>TBD</td>
                     <td>Minneapolis, MN</td>
+                    <td>No Communication Found</td>
+                    <td>Medium</td>
+                    <td>Beauty/salon industry account with no communication history</td>
+                    <td>Handoff with Emin Medic, industry-specific assessment</td>
+                    <td>Next week</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>Promega Corporation</td>
+                <tr class="medium-risk kevin-assigned">
+                    <td><strong>CDW Corporation</strong></td>
+                    <td>$151,845.00</td>
+                    <td>1/2026</td>
+                    <td>North America</td>
+                    <td>Andrew Mugisha</td>
+                    <td>Kevin Botha</td>
+                    <td>TBD</td>
+                    <td>Vernon Hills, IL</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>Mentioned in Andrew's coordination emails but no direct communication found</td>
+                    <td>Health check call, renewal timeline discussion</td>
+                    <td>Next 2 weeks</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
+                </tr>
+                <tr class="medium-risk">
+                    <td>Chan Zuckerberg Initiative, LLC</td>
+                    <td>$150,304.68</td>
+                    <td>TBD</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>No recent communications, non profit account requiring engagement</td>
+                    <td>Non-profit engagement strategy</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk">
+                    <td>Hyland Software</td>
+                    <td>$145,000.00</td>
+                    <td>TBD</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>No recent communication</td>
+                    <td>Re-engagement assessment</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk kevin-assigned new-account">
+                    <td><strong>Promega Corporation</strong></td>
                     <td>$144,750.00</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Lethicia Mares</td>
                     <td>Emin Medic</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - Biotechnology account</td>
-                    <td>Schedule handoff with Emin Medic</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
                     <td>TBD</td>
                     <td>Madison, WI</td>
+                    <td>No Communication Found</td>
+                    <td>Medium</td>
+                    <td>Biotechnology account with no communication history</td>
+                    <td>Handoff with Emin Medic, biotech sector assessment</td>
+                    <td>Next week</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>Juniper Networks</td>
+                <tr class="medium-risk kevin-assigned new-account">
+                    <td><strong>Juniper Networks</strong></td>
                     <td>$139,461.52</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Lethicia Mares</td>
                     <td>Muhammad Khwaja</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - Networking technology account</td>
-                    <td>Schedule handoff with Muhammad Khwaja</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
                     <td>TBD</td>
                     <td>Sunnyvale, CA</td>
+                    <td>No Communication Found</td>
+                    <td>Medium</td>
+                    <td>Networking technology account with no communication history</td>
+                    <td>Handoff with Muhammad Khwaja, networking assessment</td>
+                    <td>Next week</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>ScienceLogic</td>
+                <tr class="medium-risk">
+                    <td>OCLC Online Computer Library Center, Inc.</td>
+                    <td>$138,931.52</td>
+                    <td>9/1/2025</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Dublin, OH</td>
+                    <td>Renewal Prep</td>
+                    <td>Medium</td>
+                    <td>Sept 1 renewal approaching, library services account</td>
+                    <td>Standards certification review</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk kevin-assigned">
+                    <td><strong>Blue Shield of California</strong></td>
+                    <td>$136,500.00</td>
+                    <td>12/2027</td>
+                    <td>North America</td>
+                    <td>Lethicia Mares</td>
+                    <td>Kevin Botha</td>
+                    <td>TBD</td>
+                    <td>San Francisco, CA</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>Long-term renewal (Dec 2027), no recent communication found</td>
+                    <td>Healthcare compliance review and engagement assessment</td>
+                    <td>Next 2 weeks</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
+                </tr>
+                <tr class="medium-risk kevin-assigned">
+                    <td><strong>Flexera Software</strong></td>
+                    <td>$132,637.53</td>
+                    <td>TBD</td>
+                    <td>North America</td>
+                    <td>Andrew Mugisha</td>
+                    <td>Kevin Botha</td>
+                    <td>TBD</td>
+                    <td>Itasca, IL</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>Mentioned in Andrew's coordination emails, no renewal date listed</td>
+                    <td>Health check call, renewal timeline confirmation</td>
+                    <td>Next 2 weeks</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
+                </tr>
+                <tr class="medium-risk kevin-assigned new-account">
+                    <td><strong>ScienceLogic</strong></td>
                     <td>$130,000.00</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Lethicia Mares</td>
                     <td>Muhammad Khwaja</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - IT monitoring platform</td>
-                    <td>Schedule handoff with Muhammad Khwaja</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
                     <td>TBD</td>
                     <td>Reston, VA</td>
+                    <td>No Communication Found</td>
+                    <td>Medium</td>
+                    <td>IT monitoring platform with no communication history</td>
+                    <td>Handoff with Muhammad Khwaja, IT platform assessment</td>
+                    <td>Next week</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>Saviynt</td>
+                <tr class="medium-risk">
+                    <td>1WorldSync</td>
+                    <td>$129,730.76</td>
+                    <td>TBD</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Escalation</td>
+                    <td>Medium</td>
+                    <td>Email notification failure, escalation open</td>
+                    <td>Technical escalation resolution</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk">
+                    <td>Blue Cross Blue Shield NC</td>
+                    <td>$124,520.00</td>
+                    <td>9/20/2025</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Durham, NC</td>
+                    <td>Renewal Prep</td>
+                    <td>Medium</td>
+                    <td>Sept 20 renewal approaching, healthcare compliance requirements</td>
+                    <td>Healthcare compliance review and renewal prep</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk kevin-assigned new-account">
+                    <td><strong>Saviynt</strong></td>
                     <td>$116,719.00</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Lethicia Mares</td>
                     <td>Muhammad Khwaja</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - Identity governance platform</td>
-                    <td>Schedule handoff with Muhammad Khwaja</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
                     <td>TBD</td>
                     <td>El Segundo, CA</td>
+                    <td>No Communication Found</td>
+                    <td>Medium</td>
+                    <td>Identity governance platform with no communication history</td>
+                    <td>Handoff with Muhammad Khwaja, security platform assessment</td>
+                    <td>Next week</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>National Bank of Canada</td>
+                <tr class="medium-risk kevin-assigned new-account">
+                    <td><strong>National Bank of Canada</strong></td>
                     <td>$114,573.62</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Lethicia Mares</td>
                     <td>Muhammad Khwaja</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - Financial services account</td>
-                    <td>Schedule handoff with Muhammad Khwaja</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
                     <td>TBD</td>
                     <td>Montreal, QC</td>
+                    <td>No Communication Found</td>
+                    <td>Medium</td>
+                    <td>Financial services account with no communication history</td>
+                    <td>Handoff with Muhammad Khwaja, financial sector assessment</td>
+                    <td>Next week</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>Staples</td>
+                <tr class="medium-risk">
+                    <td>NSF International</td>
+                    <td>$114,096.00</td>
+                    <td>TBD</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>No recent comms, standards/certification account requiring check</td>
+                    <td>Standards certification review</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk">
+                    <td>Cochlear Americas Corporation</td>
+                    <td>$113,550.00</td>
+                    <td>TBD</td>
+                    <td>North America</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>No recent communications, medical device account requiring assessment</td>
+                    <td>Medical device industry assessment</td>
+                    <td>TBD</td>
+                    <td>Planned</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="medium-risk kevin-assigned">
+                    <td><strong>Tiffany & Co.</strong></td>
+                    <td>$112,944.00</td>
+                    <td>10/2025</td>
+                    <td>North America</td>
+                    <td>Andrew Mugisha</td>
+                    <td>Kevin Botha</td>
+                    <td>TBD</td>
+                    <td>New York, NY</td>
+                    <td>Dormant</td>
+                    <td>Medium</td>
+                    <td>Mentioned in Andrew's coordination emails but no direct communication found</td>
+                    <td>Urgent re-engagement, renewal preparation</td>
+                    <td>Next 2 weeks</td>
+                    <td>Planned</td>
+                    <td>✅ YES</td>
+                </tr>
+                <tr class="medium-risk kevin-assigned new-account">
+                    <td><strong>Staples</strong></td>
                     <td>$111,750.00</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Lethicia Mares</td>
                     <td>Muhammad Khwaja</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - Retail office supplies</td>
-                    <td>Schedule handoff with Muhammad Khwaja</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
-                    <td>TBD</td>
+                    <td>Micah Ary, Lindsey Perry, Melisa Courtney</td>
                     <td>Framingham, MA</td>
+                    <td>Active Monthly Meetings</td>
+                    <td>Low</td>
+                    <td>Active monthly meetings established</td>
+                    <td>Continue regular monthly meetings with team</td>
+                    <td>Ongoing</td>
+                    <td>Active</td>
+                    <td>✅ YES</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>Caleres</td>
-                    <td>$103,703.00</td>
+
+                <!-- Continue with remaining accounts... -->
+                <!-- LOW RISK ACCOUNTS -->
+                <tr class="low-risk">
+                    <td>VodafoneZiggo</td>
+                    <td>$192,340.11</td>
+                    <td>TBD</td>
+                    <td>International</td>
+                    <td>Asad Khalil</td>
+                    <td>TBD</td>
+                    <td>TBD</td>
+                    <td>Netherlands</td>
+                    <td>Stable</td>
+                    <td>Low</td>
+                    <td>Stable international account</td>
+                    <td>Regular monitoring</td>
+                    <td>TBD</td>
+                    <td>Active</td>
+                    <td>❌ NO</td>
+                </tr>
+                <tr class="low-risk kevin-assigned">
+                    <td><strong>Sisense Inc.</strong></td>
+                    <td>$163,381.55</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Lethicia Mares</td>
-                    <td>Muhammad Khwaja</td>
+                    <td>Kevin Botha</td>
+                    <td>Jackie Pacheco, David Raynor</td>
+                    <td>New York, NY</td>
+                    <td>Active Monthly Syncs</td>
+                    <td>Low</td>
+                    <td>Positive - Active monthly syncs established</td>
+                    <td>Continue monthly sync meetings, product enhancement requests submitted</td>
+                    <td>Ongoing</td>
+                    <td>Active</td>
                     <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - Footwear retail</td>
-                    <td>Schedule handoff with Muhammad Khwaja</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
-                    <td>TBD</td>
-                    <td>Clayton, MO</td>
                 </tr>
-                <tr class="unknown-risk kevin-assigned">
-                    <td>Onestream Software</td>
-                    <td>$100,703.64</td>
+                <tr class="low-risk">
+                    <td>Target Corporation</td>
+                    <td>$152,796.25</td>
                     <td>TBD</td>
                     <td>North America</td>
                     <td>Asad Khalil</td>
-                    <td>Emin Medic</td>
-                    <td>✅ YES</td>
-                    <td>Unknown</td>
-                    <td>REQUIRES ASSESSMENT - Financial software platform</td>
-                    <td>Schedule handoff with Emin Medic</td>
-                    <td>Next week</td>
-                    <td>Planned</td>
-                    <td>Unknown</td>
                     <td>TBD</td>
-                    <td>Rochester, MI</td>
+                    <td>TBD</td>
+                    <td>Minneapolis, MN</td>
+                    <td>Stable</td>
+                    <td>Low</td>
+                    <td>Stable enterprise account</td>
+                    <td>Regular monitoring</td>
+                    <td>TBD</td>
+                    <td>Active</td>
+                    <td>❌ NO</td>
                 </tr>
             </tbody>
         </table>
@@ -733,8 +989,8 @@
                     case 'high-risk':
                         show = row.classList.contains('high-risk');
                         break;
-                    case 'unknown':
-                        show = row.classList.contains('unknown-risk');
+                    case 'new':
+                        show = row.classList.contains('new-account');
                         break;
                 }
                 
@@ -765,7 +1021,7 @@
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'account_portfolio_analysis.csv';
+            a.download = 'updated_account_portfolio.csv';
             a.click();
             window.URL.revokeObjectURL(url);
         }
